@@ -144,6 +144,7 @@ main{
   color:var(--ink-soft);
   border-radius:0 8px 8px 0;
 }
+.drive-info a{color:var(--primary-dark);text-decoration:none;border-bottom:1px dotted var(--primary);}
 .day-body{padding:6px 20px 18px;}
 .spots{list-style:none;margin:14px 0 0;padding:0;}
 .spots li{
@@ -206,6 +207,7 @@ details.info-card summary::before{
 }
 details.info-card[open] summary::before{content:"▾ ";}
 details.info-card .content{margin-top:14px;font-size:.92rem;color:var(--ink-soft);}
+details.info-card .content a{color:var(--primary-dark);text-decoration:none;border-bottom:1px dotted var(--primary);}
 details.info-card h4{color:var(--ink);margin:14px 0 6px;font-size:.95rem;}
 details.info-card ul{margin:0;padding-left:20px;}
 details.info-card li{margin-bottom:6px;}
@@ -255,7 +257,7 @@ footer{
     <div class="content">
       <h4>租還車</h4>
       <ul>
-        <li>建議在仙台站東口或仙台機場取車、還車，市區與機場店都有多家連鎖租車公司（Toyota Rent a Car、Nippon Rent-A-Car、Times Car、ORIX 等），可直接 Google 搜尋比價。</li>
+        <li>取還車地點：<a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car（ニッポンレンタカー）</a>，出關後可直接步行或搭接駁到營業所取車，還車也在同一據點。</li>
         <li>8 天環線建議租小型車或掀背車即可，山區彎道多，車身太大不好開；若 3-4 人以上帶行李，選旅行車款較寬裕。</li>
       </ul>
       <h4>台灣駕照怎麼開</h4>
@@ -309,7 +311,7 @@ footer{
       <span class="day-date">8/15（六）</span>
     </div>
     <div class="day-title">抵達仙台・取車・市區暖身</div>
-    <div class="drive-info">🚗 仙台機場／仙台站取車　·　市區移動為主，車程輕鬆</div>
+    <div class="drive-info">🚗 <a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car</a> 取車　·　市區移動為主，車程輕鬆</div>
     <div class="day-body">
       <ul class="spots">
         <li>
@@ -525,7 +527,7 @@ footer{
       <span class="day-date">8/22（六）</span>
     </div>
     <div class="day-title">仙台市內採買・還車返程</div>
-    <div class="drive-info">🚗 市區移動 → 仙台機場／仙台站還車</div>
+    <div class="drive-info">🚗 市區移動 → <a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car</a> 還車</div>
     <div class="day-body">
       <ul class="spots">
         <li>
@@ -534,7 +536,7 @@ footer{
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🚗 還車：<b>仙台機場／仙台站</b></div>
+        <div class="meta-pill">🚗 還車：<b><a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car</a></b></div>
       </div>
       <div class="note">還車前記得加滿油、確認油單，並預留提前抵達機場的緩衝時間。</div>
       <div class="day-map" id="map8"></div>
