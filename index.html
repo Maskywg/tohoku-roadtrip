@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東北自駕環線 8 日｜仙台入・仙台出</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{
+  --primary:#a63d2f;
+  --primary-dark:#7c2c22;
+  --gold:#c9a227;
+  --cream:#faf6ee;
+  --paper:#fffdf9;
+  --ink:#2b2420;
+  --ink-soft:#6b5d52;
+  --line:#e6dccb;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Noto Sans TC","Hiragino Sans","PingFang TC",sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+}
+header{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary) 60%,#c4573f);
+  color:#fff8ef;
+  padding:56px 20px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 80% 20%, rgba(255,255,255,.12), transparent 55%);
+}
+header h1{
+  font-size:2.1rem;
+  margin:0 0 10px;
+  letter-spacing:.04em;
+  position:relative;
+}
+header p.sub{
+  margin:0;
+  font-size:1rem;
+  color:#f6e3cf;
+  position:relative;
+}
+.badges{
+  margin-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  position:relative;
+}
+.badge{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.35);
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+}
+main{
+  max-width:880px;
+  margin:0 auto;
+  padding:32px 16px 80px;
+}
+.route-overview{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px 20px;
+  margin-bottom:30px;
+  box-shadow:0 2px 10px rgba(120,80,50,.06);
+}
+.route-overview h2{margin-top:0;font-size:1.15rem;color:var(--primary-dark);}
+.route-flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  font-size:.95rem;
+  color:var(--ink);
+}
+.route-flow .city{
+  background:var(--cream);
+  border:1px solid var(--line);
+  padding:5px 12px;
+  border-radius:10px;
+  font-weight:700;
+}
+.route-flow .arrow{color:var(--gold);font-weight:700;}
+#overviewMap{
+  height:280px;
+  border-radius:12px;
+  margin-top:16px;
+  border:1px solid var(--line);
+}
+.day-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  margin-bottom:22px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(120,80,50,.06);
+}
+.day-head{
+  background:#fff2e4;
+  padding:16px 20px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.day-head .day-num{
+  font-size:1.25rem;
+  font-weight:800;
+  color:var(--primary-dark);
+}
+.day-head .day-date{
+  font-size:.9rem;
+  color:var(--ink-soft);
+}
+.day-title{
+  padding:14px 20px 0;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--ink);
+}
+.drive-info{
+  margin:10px 20px 0;
+  background:var(--cream);
+  border-left:3px solid var(--gold);
+  padding:8px 12px;
+  font-size:.88rem;
+  color:var(--ink-soft);
+  border-radius:0 8px 8px 0;
+}
+.day-body{padding:6px 20px 18px;}
+.spots{list-style:none;margin:14px 0 0;padding:0;}
+.spots li{
+  padding:10px 0;
+  border-bottom:1px dashed var(--line);
+}
+.spots li:last-child{border-bottom:none;}
+.spots .spot-name{font-weight:700;color:var(--primary-dark);}
+.spots .spot-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--primary);}
+.spots .spot-desc{font-size:.9rem;color:var(--ink-soft);margin-top:2px;}
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+  font-size:.88rem;
+}
+.meta-pill{
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:6px 12px;
+  color:var(--ink-soft);
+}
+.meta-pill b{color:var(--ink);}
+.note{
+  margin-top:12px;
+  font-size:.88rem;
+  color:var(--ink-soft);
+  background:#f4ede0;
+  padding:10px 12px;
+  border-radius:8px;
+}
+.day-map{
+  height:220px;
+  border-radius:10px;
+  margin-top:14px;
+  border:1px solid var(--line);
+}
+details.info-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  margin-bottom:20px;
+  padding:16px 20px;
+  box-shadow:0 2px 10px rgba(120,80,50,.06);
+}
+details.info-card summary{
+  cursor:pointer;
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--primary-dark);
+  list-style:none;
+}
+details.info-card summary::-webkit-details-marker{display:none;}
+details.info-card summary::before{
+  content:"▸ ";
+  color:var(--gold);
+}
+details.info-card[open] summary::before{content:"▾ ";}
+details.info-card .content{margin-top:14px;font-size:.92rem;color:var(--ink-soft);}
+details.info-card h4{color:var(--ink);margin:14px 0 6px;font-size:.95rem;}
+details.info-card ul{margin:0;padding-left:20px;}
+details.info-card li{margin-bottom:6px;}
+footer{
+  text-align:center;
+  padding:30px 16px 50px;
+  color:var(--ink-soft);
+  font-size:.82rem;
+}
+@media (max-width:600px){
+  header h1{font-size:1.5rem;}
+  .route-flow{font-size:.85rem;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>東北自駕環線 8 日</h1>
+  <p class="sub">仙台入・仙台出　｜　青森・秋田・山形一圈</p>
+  <div class="badges">
+    <div class="badge">2026/08/15（六）～ 08/22（六）</div>
+    <div class="badge">7 夜 8 天</div>
+    <div class="badge">仙台住 2 晚</div>
+    <div class="badge">自駕環線</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="route-overview">
+    <h2>路線總覽</h2>
+    <div class="route-flow">
+      <span class="city">仙台</span><span class="arrow">→</span>
+      <span class="city">青森</span><span class="arrow">→</span>
+      <span class="city">秋田</span><span class="arrow">→</span>
+      <span class="city">山形</span><span class="arrow">→</span>
+      <span class="city">仙台</span>
+    </div>
+    <div id="overviewMap"></div>
+  </section>
+
+  <details class="info-card" id="driveInfoCard">
+    <summary>🚗 自駕攻略（點開看租還車與注意事項）</summary>
+    <div class="content">
+      <h4>租還車</h4>
+      <ul>
+        <li>建議在仙台站東口或仙台機場取車、還車，市區與機場店都有多家連鎖租車公司（Toyota Rent a Car、Nippon Rent-A-Car、Times Car、ORIX 等），可直接 Google 搜尋比價。</li>
+        <li>8 天環線建議租小型車或掀背車即可，山區彎道多，車身太大不好開；若 3-4 人以上帶行李，選旅行車款較寬裕。</li>
+      </ul>
+      <h4>台灣駕照怎麼開</h4>
+      <ul>
+        <li>日本不接受台灣的國際駕照（IDP），台灣人須攜帶「台灣駕照日文譯本」（監理站或中華民國汽車安全協會可申請）＋台灣駕照正本＋護照，三者缺一不可。</li>
+        <li>建議出發前先線上申請譯本，現場申請也可但要預留時間。</li>
+      </ul>
+      <h4>路上注意事項</h4>
+      <ul>
+        <li>日本靠左行駛、方向盤在右邊，圓環與轉彎方向跟台灣相反，剛上路先在停車場練習幾分鐘再上路。</li>
+        <li>高速公路建議租車時加辦 ETC 卡，山形・秋田・青森之間走高速可省下不少時間。</li>
+        <li>山區路段（十和田湖、鳥海山周邊）彎道多、有些路段訊號差，離開前先確認油量並下載離線地圖。</li>
+        <li>8 月是東北山區旺季，熱門景點（銀山溫泉、山寺）停車場容易客滿，建議早上盡早抵達。</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- Day 1 -->
+  <div class="day-card" data-day="1">
+    <div class="day-head">
+      <span class="day-num">Day 1</span>
+      <span class="day-date">8/15（六）</span>
+    </div>
+    <div class="day-title">抵達仙台・取車・市區暖身</div>
+    <div class="drive-info">🚗 仙台機場／仙台站取車　·　市區移動為主，車程輕鬆</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="仙台城跡 青葉城址">仙台城跡（青葉城址）</a></div>
+          <div class="spot-desc">伊達政宗的居城遺跡，眺望仙台市區與廣瀨川，山頭有政宗騎馬像。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="瑞鳳殿 仙台">瑞鳳殿</a></div>
+          <div class="spot-desc">伊達政宗的靈廟，桃山文化風格的絢爛建築，隱身在杉木林間。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="仙台朝市">仙台朝市</a></div>
+          <div class="spot-desc">在地人的廚房，蔬果魚貨與熟食小店聚集的懷舊商店街。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 晚餐：<b>牛舌定食（一番町周邊）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>仙台市區（第 1 晚）</b></div>
+      </div>
+      <div class="note">今天以抵達、取車、市區走走為主，把時差跟長途飛行的疲勞留在最有彈性的第一天消化。</div>
+      <div class="day-map" id="map1"></div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card" data-day="2">
+    <div class="day-head">
+      <span class="day-num">Day 2</span>
+      <span class="day-date">8/16（日）</span>
+    </div>
+    <div class="day-title">仙台 → 松島 → 北上青森</div>
+    <div class="drive-info">🚗 仙台 → 松島 約 40 分　｜　松島 → 青森市 約 3.5～4 小時（走東北道）</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="松島 日本三景">松島（日本三景）</a></div>
+          <div class="spot-desc">灣內兩百多座小島的海景，可安排搭遊覽船繞島，或走五大堂、圓通院。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="青森睡魔祭之家 WA・RASSE">睡魔之家 WA・RASSE</a></div>
+          <div class="spot-desc">抵達青森後可趕在閉館前參觀，展示青森睡魔祭的巨型燈籠山車。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 午餐：<b>松島周邊海鮮（牡蠣・穴子丼）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>青森市區</b></div>
+      </div>
+      <div class="note">今天是長途拉車日，松島安排半天即可，把時間留給下午北上的路程，避免摸黑開山路。</div>
+      <div class="day-map" id="map2"></div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card" data-day="3">
+    <div class="day-head">
+      <span class="day-num">Day 3</span>
+      <span class="day-date">8/17（一）</span>
+    </div>
+    <div class="day-title">青森市內 → 十和田湖・奧入瀨溪流</div>
+    <div class="drive-info">🚗 青森市 → 十和田湖 約 1.5～2 小時</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="三內丸山遺跡">三內丸山遺跡</a></div>
+          <div class="spot-desc">日本規模最大的繩文時代聚落遺跡，適合安排上午參觀。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="奥入瀬渓流">奧入瀨溪流</a></div>
+          <div class="spot-desc">沿溪的散步道，瀑布與清流交錯，夏季綠意濃密，是東北自駕經典路段。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="十和田湖">十和田湖</a></div>
+          <div class="spot-desc">火山口湖，湖畔有乙女之像，傍晚在湖邊散步很舒服。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 午餐：<b>A-FACTORY 或十和田湖畔食堂</b></div>
+        <div class="meta-pill">🛏 住宿：<b>十和田湖畔 或 青森市區</b></div>
+      </div>
+      <div class="note">奧入瀨溪流沿線車速要放慢，很多路段停車場有限，建議上午早點出發。</div>
+      <div class="day-map" id="map3"></div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card" data-day="4">
+    <div class="day-head">
+      <span class="day-num">Day 4</span>
+      <span class="day-date">8/18（二）</span>
+    </div>
+    <div class="day-title">十和田 → 角館 → 秋田</div>
+    <div class="drive-info">🚗 十和田湖 → 角館 約 2 小時　｜　角館 → 秋田市 約 1 小時</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="田沢湖 秋田">田澤湖</a></div>
+          <div class="spot-desc">日本最深的湖泊，湖水呈深邃的鈷藍色，湖畔有金色的辰子像。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="角館武家屋敷">角館武家屋敷通</a></div>
+          <div class="spot-desc">「小京都」角館的武家屋敷街，黑牆武家宅邸與老樹交織，很好拍照。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 午餐：<b>角館稲庭烏龍麵</b></div>
+        <div class="meta-pill">🛏 住宿：<b>秋田市區</b></div>
+      </div>
+      <div class="note">角館老街走路即可逛完，不用把車停太裡面，外圍付費停車場走進去反而輕鬆。</div>
+      <div class="day-map" id="map4"></div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card" data-day="5">
+    <div class="day-head">
+      <span class="day-num">Day 5</span>
+      <span class="day-date">8/19（三）</span>
+    </div>
+    <div class="day-title">大潟村稻田藝術 → 男鹿半島</div>
+    <div class="drive-info">🚗 秋田市 → 大潟村 約 40 分　｜　大潟村 → 男鹿半島 約 40～50 分　｜　男鹿半島 → 秋田市 約 1 小時</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="大潟村 田んぼアート">大潟村 田んぼアート（稻田藝術）</a></div>
+          <div class="spot-desc">用不同顏色的稻米在大片水田拼出巨型圖畫，村內有展望塔可以居高俯瞰全景，每年圖案不同，7～8 月正是稻穗轉色、圖案最完整的時期。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="男鹿真山 なまはげ館">なまはげ館・真山傳承館</a></div>
+          <div class="spot-desc">認識男鹿半島「生剥鬼」（なまはげ）除夕驅邪習俗的展示館，可以近距離看各式鬼面具、體驗實演。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="入道崎 男鹿半島">入道崎</a></div>
+          <div class="spot-desc">男鹿半島最北端的斷崖草原，黑白相間的燈塔配上日本海景色，天氣好時視野遼闊。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 晚餐：<b>秋田比內地雞鍋（きりたんぽ鍋）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>秋田市區</b></div>
+      </div>
+      <div class="note">大潟村展望塔開放時間有限（多為 9:00～17:00 左右），建議上午先去；若想改走溫泉路線，也可以把男鹿半島換成乳頭溫泉鄉（單程約 1.5 小時）。</div>
+      <div class="day-map" id="map5"></div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card" data-day="6">
+    <div class="day-head">
+      <span class="day-num">Day 6</span>
+      <span class="day-date">8/20（四）</span>
+    </div>
+    <div class="day-title">秋田 → 酒田 → 銀山溫泉</div>
+    <div class="drive-info">🚗 秋田市 → 酒田 約 2 小時　｜　酒田 → 銀山溫泉 約 1.5 小時</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="山居倉庫 酒田">山居倉庫</a></div>
+          <div class="spot-desc">明治時期的白牆米倉，後方一整排欅木林是酒田的經典畫面。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="銀山温泉">銀山溫泉</a></div>
+          <div class="spot-desc">大正浪漫風情的木造溫泉旅館街，沿河兩排，入夜點燈氣氛絕佳。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 晚餐：<b>山形牛 或 溫泉旅館會席料理</b></div>
+        <div class="meta-pill">🛏 住宿：<b>銀山溫泉 或 山形市區</b></div>
+      </div>
+      <div class="note">銀山溫泉街禁止一般車輛進入，需停在入口的公共停車場再步行進去，建議查好旅館的接駁安排。</div>
+      <div class="day-map" id="map6"></div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card" data-day="7">
+    <div class="day-head">
+      <span class="day-num">Day 7</span>
+      <span class="day-date">8/21（五）</span>
+    </div>
+    <div class="day-title">山寺 → 藏王 → 回仙台</div>
+    <div class="drive-info">🚗 銀山溫泉 → 山寺 約 1 小時　｜　山寺 → 仙台 約 1.5 小時（可繞藏王）</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="山寺 立石寺">山寺（立石寺）</a></div>
+          <div class="spot-desc">沿著懸崖鑿出的一千多階石梯登上奧之院，俯瞰山形盆地，松尾芭蕉曾在此留下俳句。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="蔵王御釜">藏王御釜</a></div>
+          <div class="spot-desc">火山口湖，湖水依天候呈現不同的翠綠色，8 月無雪但視野遼闊，時間允許可順路一看。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🍽 晚餐：<b>仙台牛舌 或 毛豆甜點（ずんだ）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>仙台市區（第 2 晚）</b></div>
+      </div>
+      <div class="note">山寺登頂石階頗陡，建議穿好走的鞋，早上人潮較少、拍照也比較舒服。</div>
+      <div class="day-map" id="map7"></div>
+    </div>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="day-card" data-day="8">
+    <div class="day-head">
+      <span class="day-num">Day 8</span>
+      <span class="day-date">8/22（六）</span>
+    </div>
+    <div class="day-title">仙台市內採買・還車返程</div>
+    <div class="drive-info">🚗 市區移動 → 仙台機場／仙台站還車</div>
+    <div class="day-body">
+      <ul class="spots">
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="仙台朝市">仙台朝市 / 站前商店街</a></div>
+          <div class="spot-desc">最後採買毛豆點心、牛舌真空包、當地酒等伴手禮的好地方。</div>
+        </li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill">🚗 還車：<b>仙台機場／仙台站</b></div>
+      </div>
+      <div class="note">還車前記得加滿油、確認油單，並預留提前抵達機場的緩衝時間。</div>
+      <div class="day-map" id="map8"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  地圖座標為概略位置僅供參考，實際路況與開放時間請以當地公告與 Google 地圖即時資訊為準。<br>
+  行程規劃僅供參考，可依實際天氣、季節活動與體力狀況調整。
+</footer>
+
+<script>
+function gmaps(q){
+  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+}
+document.querySelectorAll("[data-gmaps]").forEach(function(a){
+  a.href = gmaps(a.getAttribute("data-gmaps"));
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
+var days = [
+  { map:"map1", center:[38.2682,140.8694], zoom:12, points:[
+      {lat:38.2535,lng:140.8560,name:"仙台城跡"},
+      {lat:38.2554,lng:140.8656,name:"瑞鳳殿"},
+      {lat:38.2646,lng:140.8722,name:"仙台朝市"}
+  ]},
+  { map:"map2", center:[38.85,140.95], zoom:8, points:[
+      {lat:38.3689,lng:141.0466,name:"松島"},
+      {lat:40.8244,lng:140.7400,name:"青森睡魔之家"}
+  ]},
+  { map:"map3", center:[40.6,140.9], zoom:9, points:[
+      {lat:40.7461,lng:140.6892,name:"三內丸山遺跡"},
+      {lat:40.4939,lng:140.9075,name:"奧入瀨溪流"},
+      {lat:40.4614,lng:140.8797,name:"十和田湖"}
+  ]},
+  { map:"map4", center:[39.9,140.6], zoom:9, points:[
+      {lat:39.7256,lng:140.6842,name:"田澤湖"},
+      {lat:39.5967,lng:140.5544,name:"角館武家屋敷"},
+      {lat:39.7186,lng:140.1024,name:"秋田市"}
+  ]},
+  { map:"map5", center:[39.9,139.85], zoom:9, points:[
+      {lat:39.7186,lng:140.1024,name:"秋田市"},
+      {lat:39.9515,lng:139.9490,name:"大潟村 田んぼアート"},
+      {lat:39.9067,lng:139.7325,name:"なまはげ館"},
+      {lat:39.9558,lng:139.6989,name:"入道崎"}
+  ]},
+  { map:"map6", center:[38.9,140.2], zoom:8, points:[
+      {lat:39.7186,lng:140.1024,name:"秋田市"},
+      {lat:38.9147,lng:139.8364,name:"酒田 山居倉庫"},
+      {lat:38.5717,lng:140.5606,name:"銀山溫泉"}
+  ]},
+  { map:"map7", center:[38.4,140.6], zoom:9, points:[
+      {lat:38.5717,lng:140.5606,name:"銀山溫泉"},
+      {lat:38.3153,lng:140.4353,name:"山寺 立石寺"},
+      {lat:38.1264,lng:140.4497,name:"藏王御釜"},
+      {lat:38.2682,lng:140.8694,name:"仙台"}
+  ]},
+  { map:"map8", center:[38.2682,140.8694], zoom:12, points:[
+      {lat:38.2646,lng:140.8722,name:"仙台朝市"},
+      {lat:38.2682,lng:140.8694,name:"仙台"}
+  ]}
+];
+
+days.forEach(function(d){
+  var el = document.getElementById(d.map);
+  if(!el) return;
+  var map = L.map(d.map,{scrollWheelZoom:false}).setView(d.center, d.zoom);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; OpenStreetMap contributors',
+    maxZoom:18
+  }).addTo(map);
+  var latlngs=[];
+  d.points.forEach(function(p){
+    L.marker([p.lat,p.lng]).addTo(map).bindPopup(p.name);
+    latlngs.push([p.lat,p.lng]);
+  });
+  if(latlngs.length>1){
+    L.polyline(latlngs,{color:'#a63d2f',weight:3,dashArray:'6,6'}).addTo(map);
+    map.fitBounds(latlngs,{padding:[24,24]});
+  }
+});
+
+var overview = L.map('overviewMap',{scrollWheelZoom:false}).setView([39.3,140.7],7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors',
+  maxZoom:18
+}).addTo(overview);
+var routeCities = [
+  {lat:38.2682,lng:140.8694,name:"仙台（起點/終點）"},
+  {lat:40.8244,lng:140.7400,name:"青森"},
+  {lat:39.7186,lng:140.1024,name:"秋田"},
+  {lat:38.2404,lng:140.3634,name:"山形"},
+  {lat:38.2682,lng:140.8694,name:"仙台"}
+];
+var overviewLatlngs = routeCities.map(function(c){return [c.lat,c.lng];});
+routeCities.forEach(function(c){
+  L.marker([c.lat,c.lng]).addTo(overview).bindPopup(c.name);
+});
+L.polyline(overviewLatlngs,{color:'#a63d2f',weight:4}).addTo(overview);
+overview.fitBounds(overviewLatlngs,{padding:[20,20]});
+</script>
+
+</body>
+</html>
