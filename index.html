@@ -171,6 +171,17 @@ main{
 .spots .spot-name{font-weight:700;color:var(--primary-dark);}
 .spots .spot-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--primary);}
 .spots .spot-desc{font-size:.9rem;color:var(--ink-soft);margin-top:2px;}
+.spot-nav{
+  font-size:.8rem;
+  color:var(--ink-soft);
+  margin-top:4px;
+  background:var(--cream);
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:8px;
+}
+.spot-nav b{color:var(--ink);font-weight:700;}
+.spot-nav .nav-alt{font-style:italic;}
 .meta-row{
   display:flex;
   flex-wrap:wrap;
@@ -287,7 +298,7 @@ footer{
     <div class="content">
       <h4>租還車</h4>
       <ul>
-        <li>取還車地點：<a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car（ニッポンレンタカー）</a>。出關後到「國內線入境大廳」找櫃檯聯繫，會有接駁車來接、或直接把車開到機場，再送到營業所辦手續；還車當天一樣是接駁車把人送回機場。</li>
+        <li>取還車地點：<a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car（ニッポンレンタカー）</a>。出關後到「國內線入境大廳」找櫃檯聯繫，會有接駁車來接、或直接把車開到機場，再送到營業所辦手續；還車當天一樣是接駁車把人送回機場。<br><span class="spot-nav">📞 050-1712-2905　｜　📍 〒981-1201 宮城県名取市下増田字屋敷43</span></li>
         <li>8 天環線建議租小型車或掀背車即可，山區彎道多，車身太大不好開；若 3-4 人以上帶行李，選旅行車款較寬裕。</li>
       </ul>
       <h4>台灣駕照怎麼開</h4>
@@ -347,20 +358,24 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="仙台城跡 青葉城址">仙台城跡（青葉城址）</a></div>
           <div class="spot-desc">伊達政宗的居城遺跡，眺望仙台市區與廣瀨川，山頭有政宗騎馬像。</div>
+          <div class="spot-nav">📞 022-227-7077（不同網站列出的電話不太一致，建議優先用住所搜尋）　｜　📍 〒980-0862 宮城県仙台市青葉区天守台青葉城址</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="瑞鳳殿 仙台">瑞鳳殿</a></div>
           <div class="spot-desc">伊達政宗的靈廟，桃山文化風格的絢爛建築，隱身在杉木林間。</div>
+          <div class="spot-nav">📞 022-262-6250　｜　📍 〒980-0814 宮城県仙台市青葉区霊屋下23-2</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="仙台朝市">仙台朝市</a></div>
           <div class="spot-desc">在地人的廚房，蔬果魚貨與熟食小店聚集的懷舊商店街。</div>
+          <div class="spot-nav">📞 022-262-7173（仙台朝市商店街振興組合）　｜　📍 〒980-0021 宮城県仙台市青葉区中央3-8-5</div>
         </li>
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🍽 晚餐：<b>牛舌定食（一番町周邊）</b></div>
         <div class="meta-pill">🛏 住宿：<b><a href="#" data-gmaps="Sendai Kokusai Hotel 仙台">Sendai Kokusai Hotel</a>（仙台，第 1 晚）</b></div>
       </div>
+      <div class="spot-nav">🏨 Sendai Kokusai Hotel　📞 022-268-1112　｜　📍 〒980-0021 宮城県仙台市青葉区中央4-6-1</div>
       <div class="note">今天以抵達、取車、市區走走為主，把時差跟長途飛行的疲勞留在最有彈性的第一天消化。</div>
       <div class="day-map" id="map1"></div>
     </div>
@@ -379,20 +394,24 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="中尊寺 平泉">中尊寺</a></div>
           <div class="spot-desc">世界遺産「平泉」的核心，金碧輝煌的金色堂是奧州藤原氏的極盛見證，參道兩旁古杉參天。</div>
+          <div class="spot-nav">📞 0191-46-2211　｜　📍 〒029-4102 岩手県西磐井郡平泉町平泉衣関202</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="毛越寺 平泉">毛越寺</a></div>
           <div class="spot-desc">淨土庭園代表作，大泉池與周邊林木構成的借景庭園，夏天綠意很療癒。</div>
+          <div class="spot-nav">📞 0191-46-2331　｜　📍 〒029-4102 岩手県西磐井郡平泉町平泉大沢58</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="宮沢賢治記念館">宮澤賢治紀念館</a></div>
           <div class="spot-desc">花卷出身的作家宮澤賢治的生平與作品展示，時間夠的話可以順路一訪。</div>
+          <div class="spot-nav">📞 0198-31-2319　｜　📍 〒025-0011 岩手県花巻市矢沢第1地割1番36</div>
         </li>
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🍽 晚餐：<b>佳松園會席料理（含在住宿方案內）</b></div>
         <div class="meta-pill">🛏 住宿：<b><a href="#" data-gmaps="花巻温泉 佳松園">花卷溫泉 佳松園</a>（Hanamaki Onsen Kashoen）</b></div>
       </div>
+      <div class="spot-nav">🏨 花巻温泉 佳松園　📞 0198-37-2111　｜　📍 〒025-0304 岩手県花巻市湯本1-125-2</div>
       <div class="note">今天走東北自動車道往南內陸方向，平泉兩座世界遺產寺院半天可以逛完，抵達佳松園後直接泡湯吃晚餐放鬆。</div>
       <div class="day-map" id="map2"></div>
     </div>
@@ -411,10 +430,12 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="猊鼻渓">猊鼻溪</a></div>
           <div class="spot-desc">若上午還有時間，可以順路搭乘傳統扁舟遊覽石灰岩溪谷，船夫會唱船歌。</div>
+          <div class="spot-nav">📞 0191-47-2341（げいび観光センター）　｜　📍 〒029-0302 岩手県一関市東山町長坂字町467</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="青森屋 星野リゾート">青森屋（星野リゾート）</a></div>
           <div class="spot-desc">以青森睡魔祭與南部曲家為主題的溫泉旅館，園區內有「きもり」森林商店街、露天足湯、夜間ねぶた燈籠演出，check-in 17:00。</div>
+          <div class="spot-nav">📞 0176-51-1116（フロント直通）　｜　📍 〒033-0044 青森県三沢市字古間木山56</div>
         </li>
       </ul>
       <div class="meta-row">
@@ -439,10 +460,12 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="奥入瀬渓流">奧入瀨溪流</a></div>
           <div class="spot-desc">沿溪的散步道，瀑布與清流交錯，夏季綠意濃密，是東北自駕經典路段。</div>
+          <div class="spot-nav"><span class="nav-alt">（溪流本身沒有電話，導航用最近的奧入瀨渓流館代替）</span><br>📞 0176-74-1233　｜　📍 〒034-0301 青森県十和田市大字奥瀬字栃久保183</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="十和田湖">十和田湖</a></div>
           <div class="spot-desc">火山口湖，湖畔有乙女之像，傍晚趕回青森屋前可以在湖邊散步。</div>
+          <div class="spot-nav"><span class="nav-alt">（湖泊本身沒有電話，導航用十和田湖観光交流中心「ぷらっと」代替）</span><br>📞 0176-75-1531　｜　📍 〒018-5501 青森県十和田市大字奥瀬字十和田湖畔休屋486</div>
         </li>
       </ul>
       <div class="meta-row">
@@ -467,18 +490,22 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="田沢湖 秋田">田澤湖</a></div>
           <div class="spot-desc">日本最深的湖泊，湖水呈深邃的鈷藍色，湖畔有金色的辰子像。</div>
+          <div class="spot-nav"><span class="nav-alt">（湖泊本身沒有電話，導航用湖畔的田沢湖レストハウス代替）</span><br>📞 0187-43-0274　｜　📍 秋田県仙北市田沢湖田沢字春山148</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="角館武家屋敷">角館武家屋敷通</a></div>
           <div class="spot-desc">「小京都」角館的武家屋敷街，黑牆武家宅邸與老樹交織，很好拍照。</div>
+          <div class="spot-nav"><span class="nav-alt">（老街本身沒有電話，導航用田沢湖・角館観光協会代替）</span><br>📞 0187-42-8280　｜　📍 〒014-0369 秋田県仙北市角館町上菅沢394-2</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="大仙市中仙 田んぼアート">中仙 田んぼアート（稻田藝術）</a></div>
           <div class="spot-desc">大仙市中仙的水田彩繪，用不同顏色稻米拼出巨型圖畫，離角館車程約 20～30 分鐘算順路，有展望台可以居高俯瞰，每年圖案不同，實際舉辦與開放期間請以當年公告為準。</div>
+          <div class="spot-nav">⚠️ 這個景點查無公開電話跟確切最新現況，網路上能查到的多是舊年份資訊，也容易跟隔壁「仙北市」的類似活動搞混。建議出發前先打<b>大仙市観光物産協会 0187-86-0888</b> 確認今年還有沒有辦、正確地點在哪，再決定要不要照原計畫繞過去。</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="蟹場温泉 乳頭温泉郷">蟹場溫泉（乳頭溫泉鄉）</a></div>
           <div class="spot-desc">乳頭溫泉鄉七湯之一，隱身山毛櫸林間的木造湯屋，白濁溫泉搭配溪流聲很有秘湯氣氛。</div>
+          <div class="spot-nav">📞 0187-46-2021　｜　📍 〒014-1204 秋田県仙北市田沢湖田沢字先達沢国有林地内</div>
         </li>
       </ul>
       <div class="meta-row">
@@ -503,6 +530,7 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="銀山温泉">銀山溫泉</a></div>
           <div class="spot-desc">大正浪漫風情的木造溫泉旅館街，沿河兩排，入夜點燈氣氛絕佳，白天散步拍照也很好看。</div>
+          <div class="spot-nav"><span class="nav-alt">（導航用接駁巴士停車場「銀山観光センター・大正浪漫館」代替）</span><br>📞 0237-53-6727　｜　📍 〒999-4332 山形県尾花沢市大字上柳渡戸字十分一364-3</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="天童温泉">天童溫泉</a></div>
@@ -513,6 +541,7 @@ footer{
         <div class="meta-pill">🍽 晚餐：<b>瀧之湯旅館晚餐（含在住宿方案內）</b></div>
         <div class="meta-pill">🛏 住宿：<b><a href="#" data-gmaps="Takinoyu Hotel 天童温泉">Takinoyu Hotel</a>（天童溫泉）</b></div>
       </div>
+      <div class="spot-nav">🏨 ほほえみの宿 滝の湯　📞 023-654-2211　｜　📍 〒994-0025 山形県天童市鎌田本町1-1-30</div>
       <div class="note">
         <b>銀山溫泉接駁巴士（夏季交通管制）：</b>8 月屬於銀山溫泉夏季交通管制期間，私家車禁止開進溫泉街，車要停在<a href="#" data-gmaps="銀山観光中心 大正浪漫館">銀山觀光中心・大正浪漫館</a>的付費停車場，在同一地點排隊搭接駁巴士進去，回程也在溫泉街的接駁站牌搭車回停車場。車程很短（約 5～10 分鐘），尖峰時段班次頻繁，來回車資現場購票即可，正確發車時間與票價以當天大正浪漫館現場公告或銀山溫泉官方公告為準。建議中午前後抵達逛街最舒服，之後再開往天童溫泉。
       </div>
@@ -533,20 +562,24 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="山寺 立石寺">山寺（立石寺）</a></div>
           <div class="spot-desc">沿著懸崖鑿出的一千多階石梯登上奧之院，俯瞰山形盆地，松尾芭蕉曾在此留下俳句。</div>
+          <div class="spot-nav">📞 023-695-2843（山門事務所）　｜　📍 〒999-3301 山形県山形市山寺4456-1</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="米沢牛 レストラン 米沢">米澤牛專門店</a></div>
           <div class="spot-desc">日本三大和牛之一，米澤市內有多家燒肉／牛排／すき焼き專門店，是這天南下繞路的重頭戲。</div>
+          <div class="spot-nav">⚠️ 沒有指定固定店家，還沒查特定電話跟地址，抵達米澤後直接用導航搜尋「米沢牛」附近餐廳、現場挑一家即可。</div>
         </li>
         <li>
           <div class="spot-name"><a href="#" data-gmaps="上杉神社 米沢">上杉神社</a></div>
           <div class="spot-desc">米澤藩主上杉家的神社，飯後時間夠可以順路走走，境內綠意很舒服。</div>
+          <div class="spot-nav">📞 0238-22-3189　｜　📍 〒992-0052 山形県米沢市丸の内1-4-13</div>
         </li>
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🍽 午餐：<b>米澤牛（燒肉／すき焼き）</b></div>
         <div class="meta-pill">🛏 住宿：<b><a href="#" data-gmaps="Hotel Monterey Sendai">Hotel Monterey Sendai</a>（仙台，第 2 晚）</b></div>
       </div>
+      <div class="spot-nav">🏨 ホテルモントレ仙台　📞 022-265-7110　｜　📍 〒980-0021 宮城県仙台市青葉区中央4-1-8</div>
       <div class="note">米澤在山形最南邊，這天等於往南繞一大圈再回仙台，車程加起來要 3 小時多，建議山寺早點去、米澤吃完午餐就直接北上仙台，抵達會比較晚（傍晚），若想輕鬆一點也可以把米澤換回原本的藏王御釜（離天童近很多）。</div>
       <div class="day-map" id="map7"></div>
     </div>
@@ -565,11 +598,13 @@ footer{
         <li>
           <div class="spot-name"><a href="#" data-gmaps="仙台朝市">仙台朝市 / 站前商店街</a></div>
           <div class="spot-desc">最後採買毛豆點心、牛舌真空包、當地酒等伴手禮的好地方。</div>
+          <div class="spot-nav">📞 022-262-7173　｜　📍 〒980-0021 宮城県仙台市青葉区中央3-8-5</div>
         </li>
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🚗 還車：<b><a href="#" data-gmaps="ニッポンレンタカー 仙台空港店">仙台機場 Nippon Rent-A-Car</a></b></div>
       </div>
+      <div class="spot-nav">📞 050-1712-2905　｜　📍 〒981-1201 宮城県名取市下増田字屋敷43</div>
       <div class="note">還車前記得加滿油、確認油單，並預留提前抵達機場的緩衝時間。</div>
       <div class="day-map" id="map8"></div>
     </div>
@@ -579,6 +614,7 @@ footer{
 
 <footer>
   地圖座標為概略位置僅供參考，實際路況與開放時間請以當地公告與 Google 地圖即時資訊為準。<br>
+  各景點電話／地址是為了方便輸入車用導航（電話番号檢索或住所檢索）整理的，部分自然景點沒有自己的電話，改用鄰近設施代替，出發前建議再核對一次。<br>
   行程規劃僅供參考，可依實際天氣、季節活動與體力狀況調整。
 </footer>
 
