@@ -102,6 +102,22 @@ main{
   margin-top:16px;
   border:1px solid var(--line);
 }
+.weather-embed{
+  position:relative;
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.weather-embed iframe{
+  width:100%;
+  height:420px;
+  display:block;
+  border:0;
+}
+@media (max-width:600px){
+  .weather-embed iframe{height:320px;}
+}
 .day-card{
   background:var(--paper);
   border:1px solid var(--line);
@@ -252,6 +268,19 @@ footer{
     </div>
     <div id="overviewMap"></div>
   </section>
+
+  <details class="info-card" id="weatherCard">
+    <summary>🌤 東北天氣預報（Windy，點開看即時預報）</summary>
+    <div class="content">
+      <div class="weather-embed">
+        <iframe src="https://embed.windy.com/embed2.html?lat=39.2&lon=140.9&detailLat=39.2&detailLon=140.9&width=650&height=450&zoom=6&level=surface&overlay=rain&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+          frameborder="0"
+          loading="lazy"
+          title="Windy 東北天氣預報"></iframe>
+      </div>
+      <p style="margin-top:10px;font-size:.8rem;">地圖可以自己拖動、切換降雨／風力／氣溫圖層，或點右上角放大到全螢幕；出發前記得再看一次最新預報調整行程。</p>
+    </div>
+  </details>
 
   <details class="info-card" id="driveInfoCard">
     <summary>🚗 自駕攻略（點開看租還車與注意事項）</summary>
