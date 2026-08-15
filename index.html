@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>東北自駕環線 8 日｜仙台入・仙台出</title>
+<title>邱佬東北自駕環線 8 日｜仙台入・仙台出</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -223,8 +223,8 @@ footer{
 <body>
 
 <header>
-  <h1>東北自駕環線 8 日</h1>
-  <p class="sub">仙台入・仙台出　｜　青森・秋田・山形一圈</p>
+  <h1>邱佬東北自駕環線 8 日</h1>
+  <p class="sub">仙台入・仙台出　｜　花卷・青森・乳頭温泉・山形一圈</p>
   <div class="badges">
     <div class="badge">2026/08/15（六）～ 08/22（六）</div>
     <div class="badge">7 夜 8 天</div>
@@ -239,9 +239,11 @@ footer{
     <h2>路線總覽</h2>
     <div class="route-flow">
       <span class="city">仙台</span><span class="arrow">→</span>
-      <span class="city">青森</span><span class="arrow">→</span>
-      <span class="city">秋田</span><span class="arrow">→</span>
-      <span class="city">山形</span><span class="arrow">→</span>
+      <span class="city">花卷溫泉</span><span class="arrow">→</span>
+      <span class="city">青森屋（三澤）</span><span class="arrow">→</span>
+      <span class="city">蟹場溫泉（乳頭）</span><span class="arrow">→</span>
+      <span class="city">銀山溫泉</span><span class="arrow">→</span>
+      <span class="city">天童溫泉</span><span class="arrow">→</span>
       <span class="city">仙台</span>
     </div>
     <div id="overviewMap"></div>
@@ -264,9 +266,37 @@ footer{
       <ul>
         <li>日本靠左行駛、方向盤在右邊，圓環與轉彎方向跟台灣相反，剛上路先在停車場練習幾分鐘再上路。</li>
         <li>高速公路建議租車時加辦 ETC 卡，山形・秋田・青森之間走高速可省下不少時間。</li>
-        <li>山區路段（十和田湖、鳥海山周邊）彎道多、有些路段訊號差，離開前先確認油量並下載離線地圖。</li>
-        <li>8 月是東北山區旺季，熱門景點（銀山溫泉、山寺）停車場容易客滿，建議早上盡早抵達。</li>
+        <li>山區路段（十和田湖、乳頭溫泉、蟹場溫泉周邊）彎道多、有些路段訊號差，離開前先確認油量並下載離線地圖。</li>
+        <li>8 月是東北山區旺季，熱門景點（銀山溫泉、山寺）停車場容易客滿，建議早上盡早抵達；銀山溫泉街禁止車輛進入，須停在入口停車場。</li>
       </ul>
+    </div>
+  </details>
+
+  <details class="info-card" id="shoppingCard">
+    <summary>🛍 特產購物參考（點開看每站建議）</summary>
+    <div class="content">
+      <h4>仙台（Day 1・Day 7-8）</h4>
+      <ul>
+        <li><a href="#" data-gmaps="仙台 牛たん たん屋 真澄" target="_blank" rel="noopener">牛舌真空包</a>／萩の月（伴手禮蛋糕）／笹かまぼこ（魚板）：仙台站內「牛たん通り・すし通り」與站前商店街都買得到。</li>
+      </ul>
+      <h4>花卷・平泉（Day 2）</h4>
+      <ul>
+        <li><a href="#" data-gmaps="光原社 花巻" target="_blank" rel="noopener">南部鐵器</a>：岩手在地工藝，花卷、盛岡周邊店家都有，宮澤賢治文創商品也可以在紀念館內採買。</li>
+      </ul>
+      <h4>青森・三澤（Day 3-4）</h4>
+      <ul>
+        <li><a href="#" data-gmaps="A-FACTORY 青森" target="_blank" rel="noopener">蘋果製品</a>（蘋果汁、蘋果派、蘋果酒）：青森代表特產，青森屋園區內的「きもり」商店街跟 A-FACTORY 都能買到。</li>
+        <li>睡魔祭周邊小物：青森屋內設有睡魔燈籠主題紀念品區。</li>
+      </ul>
+      <h4>秋田・乳頭溫泉（Day 5-6）</h4>
+      <ul>
+        <li>稲庭烏龍麵乾麵、いぶりがっこ（煙燻醃蘿蔔）、地酒（日本酒）：角館老街與田澤湖周邊土產店常見，蟹場溫泉櫃檯也有小型賣店。</li>
+      </ul>
+      <h4>山形（Day 6-7）</h4>
+      <ul>
+        <li><a href="#" data-gmaps="山形 天童 将棋駒" target="_blank" rel="noopener">將棋駒</a>（天童特產工藝品）／櫻桃相關點心（佐藤錦季節限定，8 月已過產季可買加工品）／山形牛肉乾。</li>
+      </ul>
+      <p style="margin-top:10px;font-size:.8rem;">連結一律用 Google 搜尋帶到店家位置，實際營業時間與庫存請以現場為準。</p>
     </div>
   </details>
 
@@ -295,7 +325,7 @@ footer{
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🍽 晚餐：<b>牛舌定食（一番町周邊）</b></div>
-        <div class="meta-pill">🛏 住宿：<b>仙台市區（第 1 晚）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>Sendai Kokusai Hotel（仙台，第 1 晚）</b></div>
       </div>
       <div class="note">今天以抵達、取車、市區走走為主，把時差跟長途飛行的疲勞留在最有彈性的第一天消化。</div>
       <div class="day-map" id="map1"></div>
@@ -308,24 +338,28 @@ footer{
       <span class="day-num">Day 2</span>
       <span class="day-date">8/16（日）</span>
     </div>
-    <div class="day-title">仙台 → 松島 → 北上青森</div>
-    <div class="drive-info">🚗 仙台 → 松島 約 40 分　｜　松島 → 青森市 約 3.5～4 小時（走東北道）</div>
+    <div class="day-title">仙台 → 平泉世界遺產 → 花卷溫泉</div>
+    <div class="drive-info">🚗 仙台 → 平泉 約 1.5 小時（東北自動車道）　｜　平泉 → 花卷溫泉 約 40 分</div>
     <div class="day-body">
       <ul class="spots">
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="松島 日本三景">松島（日本三景）</a></div>
-          <div class="spot-desc">灣內兩百多座小島的海景，可安排搭遊覽船繞島，或走五大堂、圓通院。</div>
+          <div class="spot-name"><a href="#" data-gmaps="中尊寺 平泉">中尊寺</a></div>
+          <div class="spot-desc">世界遺産「平泉」的核心，金碧輝煌的金色堂是奧州藤原氏的極盛見證，參道兩旁古杉參天。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="青森睡魔祭之家 WA・RASSE">睡魔之家 WA・RASSE</a></div>
-          <div class="spot-desc">抵達青森後可趕在閉館前參觀，展示青森睡魔祭的巨型燈籠山車。</div>
+          <div class="spot-name"><a href="#" data-gmaps="毛越寺 平泉">毛越寺</a></div>
+          <div class="spot-desc">淨土庭園代表作，大泉池與周邊林木構成的借景庭園，夏天綠意很療癒。</div>
+        </li>
+        <li>
+          <div class="spot-name"><a href="#" data-gmaps="宮沢賢治記念館">宮澤賢治紀念館</a></div>
+          <div class="spot-desc">花卷出身的作家宮澤賢治的生平與作品展示，時間夠的話可以順路一訪。</div>
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🍽 午餐：<b>松島周邊海鮮（牡蠣・穴子丼）</b></div>
-        <div class="meta-pill">🛏 住宿：<b>青森市區</b></div>
+        <div class="meta-pill">🍽 晚餐：<b>佳松園會席料理（含在住宿方案內）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>花卷溫泉 佳松園（Hanamaki Onsen Kashoen）</b></div>
       </div>
-      <div class="note">今天是長途拉車日，松島安排半天即可，把時間留給下午北上的路程，避免摸黑開山路。</div>
+      <div class="note">今天走東北自動車道往南內陸方向，平泉兩座世界遺產寺院半天可以逛完，抵達佳松園後直接泡湯吃晚餐放鬆。</div>
       <div class="day-map" id="map2"></div>
     </div>
   </div>
@@ -336,28 +370,24 @@ footer{
       <span class="day-num">Day 3</span>
       <span class="day-date">8/17（一）</span>
     </div>
-    <div class="day-title">青森市內 → 十和田湖・奧入瀨溪流</div>
-    <div class="drive-info">🚗 青森市 → 十和田湖 約 1.5～2 小時</div>
+    <div class="day-title">花卷 → 青森屋（三澤，連泊第 1 晚）</div>
+    <div class="drive-info">🚗 花卷溫泉 → 青森屋 約 2.5～3 小時（東北自動車道經八戶）</div>
     <div class="day-body">
       <ul class="spots">
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="三內丸山遺跡">三內丸山遺跡</a></div>
-          <div class="spot-desc">日本規模最大的繩文時代聚落遺跡，適合安排上午參觀。</div>
+          <div class="spot-name"><a href="#" data-gmaps="猊鼻渓">猊鼻溪</a></div>
+          <div class="spot-desc">若上午還有時間，可以順路搭乘傳統扁舟遊覽石灰岩溪谷，船夫會唱船歌。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="奥入瀬渓流">奧入瀨溪流</a></div>
-          <div class="spot-desc">沿溪的散步道，瀑布與清流交錯，夏季綠意濃密，是東北自駕經典路段。</div>
-        </li>
-        <li>
-          <div class="spot-name"><a href="#" data-gmaps="十和田湖">十和田湖</a></div>
-          <div class="spot-desc">火山口湖，湖畔有乙女之像，傍晚在湖邊散步很舒服。</div>
+          <div class="spot-name"><a href="#" data-gmaps="青森屋 星野リゾート">青森屋（星野リゾート）</a></div>
+          <div class="spot-desc">以青森睡魔祭與南部曲家為主題的溫泉旅館，園區內有「きもり」森林商店街、露天足湯、夜間ねぶた燈籠演出，check-in 17:00。</div>
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🍽 午餐：<b>A-FACTORY 或十和田湖畔食堂</b></div>
-        <div class="meta-pill">🛏 住宿：<b>十和田湖畔 或 青森市區</b></div>
+        <div class="meta-pill">🍽 晚餐：<b>のれそれ食堂 和洋自助餐（含在住宿方案內）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>青森屋 by 星野リゾート（三澤，第 1 晚）</b></div>
       </div>
-      <div class="note">奧入瀨溪流沿線車速要放慢，很多路段停車場有限，建議上午早點出發。</div>
+      <div class="note">今天以拉車為主，17:00 才 check-in，中午前後在花卷或路上找地方吃飯即可，抵達後晚上留給青森屋園區內的活動。</div>
       <div class="day-map" id="map3"></div>
     </div>
   </div>
@@ -368,24 +398,24 @@ footer{
       <span class="day-num">Day 4</span>
       <span class="day-date">8/18（二）</span>
     </div>
-    <div class="day-title">十和田 → 角館 → 秋田</div>
-    <div class="drive-info">🚗 十和田湖 → 角館 約 2 小時　｜　角館 → 秋田市 約 1 小時</div>
+    <div class="day-title">青森屋連泊 → 十和田湖・奧入瀨溪流一日遊</div>
+    <div class="drive-info">🚗 青森屋（三澤）→ 十和田湖 約 1～1.5 小時</div>
     <div class="day-body">
       <ul class="spots">
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="田沢湖 秋田">田澤湖</a></div>
-          <div class="spot-desc">日本最深的湖泊，湖水呈深邃的鈷藍色，湖畔有金色的辰子像。</div>
+          <div class="spot-name"><a href="#" data-gmaps="奥入瀬渓流">奧入瀨溪流</a></div>
+          <div class="spot-desc">沿溪的散步道，瀑布與清流交錯，夏季綠意濃密，是東北自駕經典路段。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="角館武家屋敷">角館武家屋敷通</a></div>
-          <div class="spot-desc">「小京都」角館的武家屋敷街，黑牆武家宅邸與老樹交織，很好拍照。</div>
+          <div class="spot-name"><a href="#" data-gmaps="十和田湖">十和田湖</a></div>
+          <div class="spot-desc">火山口湖，湖畔有乙女之像，傍晚趕回青森屋前可以在湖邊散步。</div>
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🍽 午餐：<b>角館稲庭烏龍麵</b></div>
-        <div class="meta-pill">🛏 住宿：<b>秋田市區</b></div>
+        <div class="meta-pill">🍽 午餐：<b>十和田湖畔食堂 或 A-FACTORY</b></div>
+        <div class="meta-pill">🛏 住宿：<b>青森屋 by 星野リゾート（三澤，第 2 晚）</b></div>
       </div>
-      <div class="note">角館老街走路即可逛完，不用把車停太裡面，外圍付費停車場走進去反而輕鬆。</div>
+      <div class="note">今天不用拖行李，輕裝當日來回十和田湖・奧入瀨即可，晚上回青森屋繼續住，行李不用搬動。</div>
       <div class="day-map" id="map4"></div>
     </div>
   </div>
@@ -396,28 +426,28 @@ footer{
       <span class="day-num">Day 5</span>
       <span class="day-date">8/19（三）</span>
     </div>
-    <div class="day-title">大潟村稻田藝術 → 男鹿半島</div>
-    <div class="drive-info">🚗 秋田市 → 大潟村 約 40 分　｜　大潟村 → 男鹿半島 約 40～50 分　｜　男鹿半島 → 秋田市 約 1 小時</div>
+    <div class="day-title">青森屋 → 田澤湖・角館 → 蟹場溫泉（乳頭）</div>
+    <div class="drive-info">🚗 青森屋 → 田澤湖 約 2.5～3 小時（經盛岡）　｜　田澤湖 → 角館 約 30 分　｜　角館 → 蟹場溫泉 約 1 小時</div>
     <div class="day-body">
       <ul class="spots">
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="大潟村 田んぼアート">大潟村 田んぼアート（稻田藝術）</a></div>
-          <div class="spot-desc">用不同顏色的稻米在大片水田拼出巨型圖畫，村內有展望塔可以居高俯瞰全景，每年圖案不同，7～8 月正是稻穗轉色、圖案最完整的時期。</div>
+          <div class="spot-name"><a href="#" data-gmaps="田沢湖 秋田">田澤湖</a></div>
+          <div class="spot-desc">日本最深的湖泊，湖水呈深邃的鈷藍色，湖畔有金色的辰子像。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="男鹿真山 なまはげ館">なまはげ館・真山傳承館</a></div>
-          <div class="spot-desc">認識男鹿半島「生剥鬼」（なまはげ）除夕驅邪習俗的展示館，可以近距離看各式鬼面具、體驗實演。</div>
+          <div class="spot-name"><a href="#" data-gmaps="角館武家屋敷">角館武家屋敷通</a></div>
+          <div class="spot-desc">「小京都」角館的武家屋敷街，黑牆武家宅邸與老樹交織，很好拍照，離蟹場溫泉不遠可以順路。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="入道崎 男鹿半島">入道崎</a></div>
-          <div class="spot-desc">男鹿半島最北端的斷崖草原，黑白相間的燈塔配上日本海景色，天氣好時視野遼闊。</div>
+          <div class="spot-name"><a href="#" data-gmaps="蟹場温泉 乳頭温泉郷">蟹場溫泉（乳頭溫泉鄉）</a></div>
+          <div class="spot-desc">乳頭溫泉鄉七湯之一，隱身山毛櫸林間的木造湯屋，白濁溫泉搭配溪流聲很有秘湯氣氛。</div>
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🍽 晚餐：<b>秋田比內地雞鍋（きりたんぽ鍋）</b></div>
-        <div class="meta-pill">🛏 住宿：<b>秋田市區</b></div>
+        <div class="meta-pill">🍽 晚餐：<b>蟹場溫泉旅館晚餐（含在住宿方案內）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>蟹場溫泉（乳頭溫泉鄉，田澤湖）</b></div>
       </div>
-      <div class="note">大潟村展望塔開放時間有限（多為 9:00～17:00 左右），建議上午先去；若想改走溫泉路線，也可以把男鹿半島換成乳頭溫泉鄉（單程約 1.5 小時）。</div>
+      <div class="note">今天是長途拉車＋沿路景點的一天，角館老街走路即可逛完，蟹場溫泉山路較窄會車空間有限，建議白天光線好的時候開進去。</div>
       <div class="day-map" id="map5"></div>
     </div>
   </div>
@@ -428,24 +458,24 @@ footer{
       <span class="day-num">Day 6</span>
       <span class="day-date">8/20（四）</span>
     </div>
-    <div class="day-title">秋田 → 酒田 → 銀山溫泉</div>
-    <div class="drive-info">🚗 秋田市 → 酒田 約 2 小時　｜　酒田 → 銀山溫泉 約 1.5 小時</div>
+    <div class="day-title">蟹場溫泉 → 銀山溫泉 → 天童溫泉</div>
+    <div class="drive-info">🚗 蟹場溫泉 → 銀山溫泉 約 1.5～2 小時　｜　銀山溫泉 → 天童溫泉 約 1 小時</div>
     <div class="day-body">
       <ul class="spots">
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="山居倉庫 酒田">山居倉庫</a></div>
-          <div class="spot-desc">明治時期的白牆米倉，後方一整排欅木林是酒田的經典畫面。</div>
+          <div class="spot-name"><a href="#" data-gmaps="銀山温泉">銀山溫泉</a></div>
+          <div class="spot-desc">大正浪漫風情的木造溫泉旅館街，沿河兩排，入夜點燈氣氛絕佳，白天散步拍照也很好看。</div>
         </li>
         <li>
-          <div class="spot-name"><a href="#" data-gmaps="銀山温泉">銀山溫泉</a></div>
-          <div class="spot-desc">大正浪漫風情的木造溫泉旅館街，沿河兩排，入夜點燈氣氛絕佳。</div>
+          <div class="spot-name"><a href="#" data-gmaps="天童温泉">天童溫泉</a></div>
+          <div class="spot-desc">山形內陸溫泉鄉，以將棋駒產地聞名，晚上入住瀧之湯好好泡湯放鬆。</div>
         </li>
       </ul>
       <div class="meta-row">
-        <div class="meta-pill">🍽 晚餐：<b>山形牛 或 溫泉旅館會席料理</b></div>
-        <div class="meta-pill">🛏 住宿：<b>銀山溫泉 或 山形市區</b></div>
+        <div class="meta-pill">🍽 晚餐：<b>瀧之湯旅館晚餐（含在住宿方案內）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>Takinoyu Hotel（天童溫泉）</b></div>
       </div>
-      <div class="note">銀山溫泉街禁止一般車輛進入，需停在入口的公共停車場再步行進去，建議查好旅館的接駁安排。</div>
+      <div class="note">銀山溫泉街禁止一般車輛進入，需停在入口的公共停車場再步行進去，中午前後抵達逛街最舒服，之後再開往天童溫泉。</div>
       <div class="day-map" id="map6"></div>
     </div>
   </div>
@@ -457,7 +487,7 @@ footer{
       <span class="day-date">8/21（五）</span>
     </div>
     <div class="day-title">山寺 → 藏王 → 回仙台</div>
-    <div class="drive-info">🚗 銀山溫泉 → 山寺 約 1 小時　｜　山寺 → 仙台 約 1.5 小時（可繞藏王）</div>
+    <div class="drive-info">🚗 天童溫泉 → 山寺 約 30 分　｜　山寺 → 仙台 約 1.5 小時（可繞藏王）</div>
     <div class="day-body">
       <ul class="spots">
         <li>
@@ -471,9 +501,9 @@ footer{
       </ul>
       <div class="meta-row">
         <div class="meta-pill">🍽 晚餐：<b>仙台牛舌 或 毛豆甜點（ずんだ）</b></div>
-        <div class="meta-pill">🛏 住宿：<b>仙台市區（第 2 晚）</b></div>
+        <div class="meta-pill">🛏 住宿：<b>Hotel Monterey Sendai（仙台，第 2 晚）</b></div>
       </div>
-      <div class="note">山寺登頂石階頗陡，建議穿好走的鞋，早上人潮較少、拍照也比較舒服。</div>
+      <div class="note">山寺登頂石階頗陡，建議穿好走的鞋，早上人潮較少、拍照也比較舒服；Monterey 15:00 才能 check-in，山寺+藏王排半天剛好銜接。</div>
       <div class="day-map" id="map7"></div>
     </div>
   </div>
@@ -524,33 +554,35 @@ var days = [
       {lat:38.2554,lng:140.8656,name:"瑞鳳殿"},
       {lat:38.2646,lng:140.8722,name:"仙台朝市"}
   ]},
-  { map:"map2", center:[38.85,140.95], zoom:8, points:[
-      {lat:38.3689,lng:141.0466,name:"松島"},
-      {lat:40.8244,lng:140.7400,name:"青森睡魔之家"}
+  { map:"map2", center:[39.15,141.0], zoom:9, points:[
+      {lat:38.2682,lng:140.8694,name:"仙台"},
+      {lat:38.9928,lng:141.1000,name:"中尊寺"},
+      {lat:38.9836,lng:141.0947,name:"毛越寺"},
+      {lat:39.3903,lng:141.0736,name:"花卷溫泉 佳松園"}
   ]},
-  { map:"map3", center:[40.6,140.9], zoom:9, points:[
-      {lat:40.7461,lng:140.6892,name:"三內丸山遺跡"},
+  { map:"map3", center:[39.9,141.1], zoom:8, points:[
+      {lat:39.3903,lng:141.0736,name:"花卷溫泉"},
+      {lat:38.9686,lng:141.2394,name:"猊鼻溪"},
+      {lat:40.6845,lng:141.3686,name:"青森屋（三澤）"}
+  ]},
+  { map:"map4", center:[40.6,140.95], zoom:9, points:[
+      {lat:40.6845,lng:141.3686,name:"青森屋（三澤）"},
       {lat:40.4939,lng:140.9075,name:"奧入瀨溪流"},
       {lat:40.4614,lng:140.8797,name:"十和田湖"}
   ]},
-  { map:"map4", center:[39.9,140.6], zoom:9, points:[
+  { map:"map5", center:[40.0,140.9], zoom:8, points:[
+      {lat:40.6845,lng:141.3686,name:"青森屋（三澤）"},
       {lat:39.7256,lng:140.6842,name:"田澤湖"},
       {lat:39.5967,lng:140.5544,name:"角館武家屋敷"},
-      {lat:39.7186,lng:140.1024,name:"秋田市"}
+      {lat:39.7540,lng:140.8100,name:"蟹場溫泉（乳頭溫泉鄉）"}
   ]},
-  { map:"map5", center:[39.9,139.85], zoom:9, points:[
-      {lat:39.7186,lng:140.1024,name:"秋田市"},
-      {lat:39.9515,lng:139.9490,name:"大潟村 田んぼアート"},
-      {lat:39.9067,lng:139.7325,name:"なまはげ館"},
-      {lat:39.9558,lng:139.6989,name:"入道崎"}
-  ]},
-  { map:"map6", center:[38.9,140.2], zoom:8, points:[
-      {lat:39.7186,lng:140.1024,name:"秋田市"},
-      {lat:38.9147,lng:139.8364,name:"酒田 山居倉庫"},
-      {lat:38.5717,lng:140.5606,name:"銀山溫泉"}
-  ]},
-  { map:"map7", center:[38.4,140.6], zoom:9, points:[
+  { map:"map6", center:[39.0,140.6], zoom:8, points:[
+      {lat:39.7540,lng:140.8100,name:"蟹場溫泉"},
       {lat:38.5717,lng:140.5606,name:"銀山溫泉"},
+      {lat:38.3136,lng:140.3742,name:"天童溫泉"}
+  ]},
+  { map:"map7", center:[38.3,140.6], zoom:9, points:[
+      {lat:38.3136,lng:140.3742,name:"天童溫泉"},
       {lat:38.3153,lng:140.4353,name:"山寺 立石寺"},
       {lat:38.1264,lng:140.4497,name:"藏王御釜"},
       {lat:38.2682,lng:140.8694,name:"仙台"}
@@ -580,16 +612,18 @@ days.forEach(function(d){
   }
 });
 
-var overview = L.map('overviewMap',{scrollWheelZoom:false}).setView([39.3,140.7],7);
+var overview = L.map('overviewMap',{scrollWheelZoom:false}).setView([39.6,140.9],7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution:'&copy; OpenStreetMap contributors',
   maxZoom:18
 }).addTo(overview);
 var routeCities = [
   {lat:38.2682,lng:140.8694,name:"仙台（起點/終點）"},
-  {lat:40.8244,lng:140.7400,name:"青森"},
-  {lat:39.7186,lng:140.1024,name:"秋田"},
-  {lat:38.2404,lng:140.3634,name:"山形"},
+  {lat:39.3903,lng:141.0736,name:"花卷溫泉"},
+  {lat:40.6845,lng:141.3686,name:"青森屋（三澤）"},
+  {lat:39.7540,lng:140.8100,name:"蟹場溫泉（乳頭溫泉鄉）"},
+  {lat:38.5717,lng:140.5606,name:"銀山溫泉"},
+  {lat:38.3136,lng:140.3742,name:"天童溫泉"},
   {lat:38.2682,lng:140.8694,name:"仙台"}
 ];
 var overviewLatlngs = routeCities.map(function(c){return [c.lat,c.lng];});
